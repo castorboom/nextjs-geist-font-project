@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiosk Showcase</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Adding a modern font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles for the ripple effect */
+        @keyframes ripple {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            transform: scale(0);
+            animation: ripple 600ms linear;
+            background-color: rgba(255, 255, 255, 0.7);
+            pointer-events: none;
+        }
+        /* Custom styles for iframe container */
+        .totem-container {
+            aspect-ratio: 9/16;
+            transform: scale(1);
+            transition: transform 0.3s ease;
+        }
+        .totem-container:hover {
+            transform: scale(1.02);
+        }
+        /* Error state for iframes */
+        .iframe-error {
+            background: #f8fafc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-gray-50 to-gray-200 font-['Inter']">
+    <!-- Main container -->
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        <header class="text-center mb-12">
+            <h1 class="text-4xl font-semibold text-gray-800 mb-2">Kiosk Showcase</h1>
+            <p class="text-gray-600">Interactive Demo Display</p>
+        </header>
+
+        <!-- Totem Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
+            <!-- Totem 1 -->
+            <div class="totem-container w-full max-w-[360px] relative overflow-hidden rounded-2xl shadow-lg bg-white">
+                <div class="totem relative w-full h-full" data-url="https://demo1.app">
+                    <iframe 
+                        src="https://demo1.app" 
+                        class="w-full h-full"
+                        loading="lazy"
+                        title="Demo 1"
+                        onload="this.style.opacity='1'"
+                        onerror="handleIframeError(this)"
+                    ></iframe>
+                </div>
+            </div>
+
+            <!-- Totem 2 -->
+            <div class="totem-container w-full max-w-[360px] relative overflow-hidden rounded-2xl shadow-lg bg-white">
+                <div class="totem relative w-full h-full" data-url="https://demo2.app">
+                    <iframe 
+                        src="https://demo2.app" 
+                        class="w-full h-full"
+                        loading="lazy"
+                        title="Demo 2"
+                        onload="this.style.opacity='1'"
+                        onerror="handleIframeError(this)"
+                    ></iframe>
+                </div>
+            </div>
+
+            <!-- Totem 3 -->
+            <div class="totem-container w-full max-w-[360px] relative overflow-hidden rounded-2xl shadow-lg bg-white">
+                <div class="totem relative w-full h-full" data-url="https://demo3.app">
+                    <iframe 
+                        src="https://demo3.app" 
+                        class="w-full h-full"
+                        loading="lazy"
+                        title="Demo 3"
+                        onload="this.style.opacity='1'"
+                        onerror="handleIframeError(this)"
+                    ></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include touch feedback JavaScript -->
+    <script src="touch-feedback.js"></script>
+</body>
+</html>
